@@ -1,4 +1,4 @@
-package com.example.cs330pz.ui.theme
+package com.example.cs330pz.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
