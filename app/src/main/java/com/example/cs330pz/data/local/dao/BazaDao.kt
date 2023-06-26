@@ -6,7 +6,7 @@ import com.example.cs330pz.domain.model.Dogadjaji
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface DogadjajiDao {
+interface BazaDao {
 
     @Query("SELECT * FROM dogadjaji")
     fun getDogadjaji(): Flow<List<Dogadjaji>>

@@ -32,9 +32,6 @@ class DogadjajiViewModel @Inject constructor(
 
     init{
         getDogadjaji()
-        savedStateHandle.get<String>(Constants.DOGADJAJ_ID)?.let { dogadjajId ->
-            getDogadjajiById(dogadjajId.toInt())
-        }
         savedStateHandle.get<String>(Constants.DOGADJAJ_DAN)?.let { dogadjajDan ->
             getDogadjajiByDan(dogadjajDan.toInt())
         }
@@ -44,12 +41,6 @@ class DogadjajiViewModel @Inject constructor(
         getDogadjajiJob?.cancel()
         getDogadjajiJob = getAllDogadjajiUseCase().onEach { result ->
             _state.value = state.value.copy(dogadjaji = result)
-        }.launchIn(viewModelScope)
-    }
-
-    private fun getDogadjajiById(dogadjajId: Int){
-        getDogadjajByIdUseCase(dogadjajId).onEach { result ->
-            _state.value = state.value.copy(dogadjaj = result)
         }.launchIn(viewModelScope)
     }
 

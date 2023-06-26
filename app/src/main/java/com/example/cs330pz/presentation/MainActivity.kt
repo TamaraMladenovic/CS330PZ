@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.cs330pz.presentation.dogadjaj_detail.components.DogadjajiDetailScreen
 import com.example.cs330pz.presentation.dogadjaj_list.components.DogadjajMainItemList
 import com.example.cs330pz.presentation.mesto_list.MestoListScreen
 import com.example.cs330pz.presentation.theme.CS330PZTheme
@@ -33,6 +34,11 @@ class MainActivity : ComponentActivity() {
                         startDestination = Screen.DogadjajiScreen.route){
                         composable(route = Screen.DogadjajiScreen.route){
                             DogadjajMainItemList(navController)
+                        }
+                        composable(
+                            route = Screen.DogadjajiDetailScreen.route + "/{dogadjajId}"
+                        ) {
+                            DogadjajiDetailScreen(navController = navController)
                         }
                     }
                 }
