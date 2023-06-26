@@ -16,13 +16,14 @@ class GetMestaUseCase @Inject constructor(
 
     operator fun invoke(): Flow<Resource<List<Mesto>>> = flow {
         try{
-            emit(Resource.Loading())
+            emit(Resource.Loading<List<Mesto>>())
             val mesta = repository.getMesta().map { it.toMesto() }
-            emit(Resource.Success(mesta))
+            emit(Resource.Success<List<Mesto>>(mesta))
         } catch (e: HttpException){
-            emit(Resource.Error(e.localizedMessage ?: "An unexpected error has occured!"))
+            emit(Resource.Error<List<Mesto>>(e.localizedMessage ?: "An unexpected error has occured!"))
         } catch (e: IOException){
-            emit(Resource.Error("Coulndn't reach server. Check your internet connection!"))
+            e.printStackTrace()
+            emit(Resource.Error<List<Mesto>>("Coulndn't reach server. Check your internet connection!"))
         }
     }
 
