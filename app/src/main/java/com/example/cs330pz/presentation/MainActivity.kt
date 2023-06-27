@@ -14,8 +14,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.cs330pz.presentation.dogadjaj_detail.components.DogadjajiDetailScreen
+import com.example.cs330pz.presentation.dogadjaj_list.DogadjajMainScreen
 import com.example.cs330pz.presentation.dogadjaj_list.components.DogadjajMainItemList
 import com.example.cs330pz.presentation.mesto_list.MestoListScreen
+import com.example.cs330pz.presentation.problem_add.ProblemiScreen
 import com.example.cs330pz.presentation.theme.CS330PZTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,9 +33,18 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
                     NavHost(navController = navController,
-                        startDestination = Screen.DogadjajiScreen.route){
-                        composable(route = Screen.DogadjajiScreen.route){
-                            DogadjajMainItemList(navController)
+                        startDestination = Screen.DogadjajiMainScreen.route){
+                        composable(route = Screen.DogadjajiMainScreen.route){
+                            DogadjajMainScreen(navController = navController)
+                        }
+                        composable(route = Screen.ProblemScreen.route){
+                            ProblemiScreen(navController = navController)
+                        }
+                        composable(route = Screen.MestoListScreen.route){
+                            MestoListScreen(navController = navController)
+                        }
+                        composable(route = Screen.DogadjajiListScreen.route){
+                            DogadjajMainItemList(navController = navController)
                         }
                         composable(
                             route = Screen.DogadjajiDetailScreen.route + "/{dogadjajId}"

@@ -8,8 +8,10 @@ import com.example.cs330pz.data.local.BazaDatabase
 import com.example.cs330pz.data.remote.MestoApi
 import com.example.cs330pz.data.repository.DogadjajiRepositoryImpl
 import com.example.cs330pz.data.repository.MestoRepositoryImpl
+import com.example.cs330pz.data.repository.ProblemiRepositoryImpl
 import com.example.cs330pz.domain.repository.DogadjajiRepository
 import com.example.cs330pz.domain.repository.MestoRepository
+import com.example.cs330pz.domain.repository.ProblemiRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -62,6 +64,12 @@ object AppConfig {
     @Singleton
     fun provideDogadjajiRepository(db: BazaDatabase): DogadjajiRepository {
         return DogadjajiRepositoryImpl(db.dogadjajDao())
+    }
+
+    @Provides
+    @Singleton
+    fun provideProblemRepository(db: BazaDatabase): ProblemiRepository {
+        return ProblemiRepositoryImpl(db.dogadjajDao())
     }
 
 }
